@@ -1,0 +1,52 @@
+import * as React from 'react'; import { Button, View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+
+function HomeScreen({ navigation }) {
+return (
+<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+<Text>Lívia Macedo</Text>
+
+<text> A Lívia é minha amiga por que é uma pessoa atenciosa e esforçada, que tem muito dentro de si.</text>
+<Button
+title="fazer uma reverência (ballet)"
+onPress={() => navigation.navigate('Details')} />
+</View>
+ );
+}
+
+
+function DetailsScreen({ navigation }) {
+return (
+<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+<Text>Caroline Camargo</Text>
+<text> A Carol é minha amiga porque temos os mesmos interesses, e sempre podemos contar uma com a outra.</text>
+<Button
+title="o Charlie Brown"
+onPress={() => navigation.push('Details')}
+/>
+<Button title="Go to Home" onPress={() => navigation.navigate('Home')}  />
+<Button title="Go back" onPress={() => navigation.goBack()} />
+</View>
+);
+}
+
+
+
+
+
+
+
+const Stack = createNativeStackNavigator();
+function App() {
+return (
+<NavigationContainer>
+<Stack.Navigator initialRouteName="Home">
+<Stack.Screen name="Home" component={HomeScreen} />
+<Stack.Screen name="Details" component={DetailsScreen} />
+</Stack.Navigator>
+</NavigationContainer>
+);
+}
+export default App;
